@@ -15,5 +15,9 @@ getLines :: FilePath -> IO [String]
 getLines file = open file >>= return . lines
 
 main :: IO ()
-main = getLines "data/Movies.csv" >>= 
-    mapM_ print . map (parseMovie . splitOn "\t" . filter (/= '\r')) . take 1
+main = do
+    movies <- getLines "data/Movies.csv" >>= 
+        return . map (parseMovie . splitOn "\t" . filter (/= '\r')) . take 1
+    ratings <- getLines "data/Ratings.csv" >>=
+        return . map (parseRating . filter (/= '\r')) . take 1
+    print ratings

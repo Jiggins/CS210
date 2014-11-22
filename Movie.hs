@@ -30,9 +30,12 @@ toGenre :: Int -> Genre
 toGenre = toEnum . (\x -> x - 1)
 
 data Rating = Rating { userId  :: Int
-                     , movieId :: Int
-                     , rating  :: Double
+                     , rMovieId :: Int
+                     , rRating  :: Int
                      } deriving (Eq)
 
 instance Show Rating where
-  show r = intercalate "\t" [show $ userId r, show $ movieId r, show $ rating r]
+  show r = intercalate "\t" [show $ userId r, show $ rMovieId r, show $ rRating r]
+
+instance Ord Rating where
+    compare = compare `on` rMovieId

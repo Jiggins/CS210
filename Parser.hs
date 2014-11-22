@@ -3,9 +3,10 @@ module Parser where
 import Movie
 
 import Data.Function
+import Data.List.Split
 import Data.Maybe
-import Text.Regex.Posix
 import Text.Regex
+import Text.Regex.Posix
 
 import Prelude hiding (id)
 
@@ -27,3 +28,7 @@ parseGenre _      = Nothing
 
 parseGenres :: [String] -> [Genre]
 parseGenres = catMaybes . map parseGenre . zip [1..18] . map read
+
+parseRating :: String -> Rating
+parseRating = parse . splitOn "\t"
+	where parse (uId:mId:rating:_) = Rating (read uId) (read mId) (read rating)
