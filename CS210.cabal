@@ -10,16 +10,14 @@ license:             GPL-3
 license-file:        LICENSE
 author:              Jack Higgins
 maintainer:          jackhiggins07@gmail.com
--- copyright:           
--- category:            
 build-type:          Simple
--- extra-source-files:  
 cabal-version:       >=1.10
 
 executable CS210
   main-is:           Main.hs
-  -- other-modules:       
+  --other-modules:     Movie, Parser 
   -- other-extensions:    
-  build-depends:       base >=4.7 && <4.8
+  build-depends:     base >=4.7 && <4.8, split -any, regex-posix -any,
+                     regex-compat -any
   -- hs-source-dirs:      
-  default-language:    Haskell2010
+  default-language:  Haskell2010
