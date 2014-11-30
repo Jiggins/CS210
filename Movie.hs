@@ -38,7 +38,7 @@ genreID = (+1) . fromEnum
 toGenre :: Int -> Genre
 toGenre = toEnum . (\x -> x - 1)
 
-data Rating = Rating { userId  :: Int
+data Rating = Rating { userId   :: Int
                      , rMovieId :: Int
                      , rRating  :: Int
                      } deriving (Eq)
